@@ -14,8 +14,26 @@ var QuoteService = Class({
     getRandomQuote :function(){
         var randomIndex = Math.floor(Math.random() * quotes2.length)
         return this.quotes[randomIndex];
+    },
+    generateRandomQuotes: function(delay,callback){
+        var self = this;
+        callback(this.getRandomQuote());
+        setInterval(function(){
+            callback(self.getRandomQuote());
+        },delay);
     }
 })
+
+var TestService = Class({
+    constructor: function TestService(){},
+
+    getRandomQuote: function(){
+        return {
+            line: 'Cytat testowy',
+            author: 'Autor testowy'
+        };
+    }
+});
     
 var SecondComponent = Component({
     selector: 'second',
@@ -23,8 +41,10 @@ var SecondComponent = Component({
 })  
     .Class({
         constructor: [QuoteService,function SecondComponent(quoteService){
-           
-            this.quote = quoteService.getRandomQuote();
+            var self = this;
+            quoteService.generateRandomQuotes(2000,function(quote){
+                self.quote = quote;
+            });
         }]
 
     });
@@ -44,7 +64,9 @@ var AppComponent = Component({
 var AppModule = NgModule({
     imports: [BrowserModule],
     declarations: [AppComponent, SecondComponent],
-    providers: [QuoteService],
+    providers: [
+        {provide: QuoteService, useClass: QuoteService},
+    ],
     bootstrap: [AppComponent]
 })
 .Class({
