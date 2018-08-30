@@ -1,26 +1,25 @@
 (function(app){  
-  var Class = ng.core.Class;
+ 
 
-app.QuoteService = Class({
-    constructor: function QuoteService (){
+  class QuoteService{
+    constructor (){
         this.quotes = quotes2;
-    },
-
-    getRandomQuote: function(){
-        var randomIndex = Math.floor(Math.random() * this.quotes.length);
-        return this.quotes[randomIndex];
-    },
-
-    generateRandomQuotes: function(delay,callback){
-        var self = this;
-        callback(this.getRandomQuote());
-        setInterval(function(){
-            callback(self.getRandomQuote());
-        },delay);
     }
-})  
 
- var quotes2 = [
+    getRandomQuote(){
+      const randomIndex = Math.floor(Math.random() * this.quotes.length);
+      return this.quotes[randomIndex];
+  }
+
+  generateRandomQuotes(delay,callback){
+      callback(this.getRandomQuote());
+      setInterval(() =>callback(this.getRandomQuote()),delay);
+  }
+  }
+
+app.QuoteService = QuoteService
+
+ let quotes2 = [
     {
       "line": "Walking on water and developing software from a specification are easy if both are frozen.",
       "author": "Edward V Berard"
