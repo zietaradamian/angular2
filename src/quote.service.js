@@ -1,7 +1,4 @@
-(function(app){  
- 
-
-  class QuoteService{
+ export class QuoteService{
     constructor (){
         this.quotes = quotes2;
     }
@@ -17,9 +14,9 @@
   }
   }
 
-app.QuoteService = QuoteService
 
- let quotes2 = [
+
+ const quotes2 = [
     {
       "line": "Walking on water and developing software from a specification are easy if both are frozen.",
       "author": "Edward V Berard"
@@ -42,4 +39,3 @@ app.QuoteService = QuoteService
     }
   ];
 
-})(window.app || (window.app = {}));
