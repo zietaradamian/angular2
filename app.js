@@ -1,19 +1,31 @@
 (function(){
+
     var Component = ng.core.Component;
     var NgModule = ng.core.NgModule;
     var BrowserModule = ng.platformBrowser.BrowserModule;
     var platformBrowserDynamic = ng.platformBrowserDynamic.platformBrowserDynamic;
-    
+    var Class = ng.core.Class;
+
+var QuoteService = Class({
+    constructor: function QuoteService(){
+        this.quotes = quotes2;
+    },
+
+    getRandomQuote :function(){
+        var randomIndex = Math.floor(Math.random() * quotes2.length)
+        return this.quotes[randomIndex];
+    }
+})
     
 var SecondComponent = Component({
     selector: 'second',
     template: '<p><em>{{quote.line}}</em> {{quote.author}}</p>'
 })  
     .Class({
-        constructor:function(){
-            var randomIndex = Math.floor(Math.random() * quotes.length)
-            this.quote = quotes[randomIndex];
-        }
+        constructor: [QuoteService,function SecondComponent(quoteService){
+           
+            this.quote = quoteService.getRandomQuote();
+        }]
 
     });
     
@@ -25,13 +37,14 @@ var AppComponent = Component({
               <second></second>`
     })
 .Class({
-    constructor: function(){}
+    constructor: function AppComponent(){}
 });
 
 
 var AppModule = NgModule({
     imports: [BrowserModule],
     declarations: [AppComponent, SecondComponent],
+    providers: [QuoteService],
     bootstrap: [AppComponent]
 })
 .Class({
@@ -40,7 +53,7 @@ var AppModule = NgModule({
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 
-var quotes = [
+var quotes2 = [
     {
       "line": "Walking on water and developing software from a specification are easy if both are frozen.",
       "author": "Edward V Berard"
