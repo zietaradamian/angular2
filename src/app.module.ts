@@ -7,7 +7,7 @@ import {SecondComponent} from './second.component';
 import {AppComponent} from './app.component';
 
 @NgModule({
-  imports: [BrowserModule],
+  imports: [BrowserModule,FormsModule],
   declarations: [AppComponent, SecondComponent,ThirdComponent],
   providers: [
     { provide: QuoteService, useClass: QuoteService }
