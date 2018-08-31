@@ -1,9 +1,9 @@
 import {Quote} from './quote.model';
 export class QuoteService {
 
-  quotes : Quote[] = quotes2;
+  private quotes : Quote[] = quotes2;
 
-  getRandomQuote() : Quote {
+  private getRandomQuote() : Quote {
     const randomIndex = Math.floor(Math.random() * this.quotes.length);
     return this.quotes[randomIndex];
   }
@@ -14,7 +14,7 @@ export class QuoteService {
   }
 }
 
-const quotes2 : Quote[] = [
+ const quotes2 : Quote[] = [
   {
     "line": "Walking on water and developing software from a specification are easy if both are frozen.",
     "author": "Edward V Berard"

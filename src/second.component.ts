@@ -12,5 +12,5 @@ export class SecondComponent {
 
   constructor(quoteService: QuoteService) {
     quoteService.generateRandomQuotes(2000, quote => this.quote = quote);
-  }
+    }
 }

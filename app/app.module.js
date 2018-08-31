@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', './quote.service', './second.component', './app.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', './quote.service', './third.component', './second.component', './app.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', './quote.service'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, quote_service_1, second_component_1, app_component_1;
+    var core_1, platform_browser_1, quote_service_1, third_component_1, second_component_1, app_component_1;
     var AppModule;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['@angular/core', '@angular/platform-browser', './quote.service'
             },
             function (quote_service_1_1) {
                 quote_service_1 = quote_service_1_1;
+            },
+            function (third_component_1_1) {
+                third_component_1 = third_component_1_1;
             },
             function (second_component_1_1) {
                 second_component_1 = second_component_1_1;
@@ -36,7 +39,7 @@ System.register(['@angular/core', '@angular/platform-browser', './quote.service'
                 AppModule = __decorate([
                     core_1.NgModule({
                         imports: [platform_browser_1.BrowserModule],
-                        declarations: [app_component_1.AppComponent, second_component_1.SecondComponent],
+                        declarations: [app_component_1.AppComponent, second_component_1.SecondComponent, third_component_1.ThirdComponent],
                         providers: [
                             { provide: quote_service_1.QuoteService, useClass: quote_service_1.QuoteService }
                         ],
