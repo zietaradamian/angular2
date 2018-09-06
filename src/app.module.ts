@@ -6,10 +6,11 @@ import {ThirdComponent} from './third.component';
 import {SecondComponent} from './second.component';
 import {AppComponent} from './app.component';
 import {CurrencySelectComponent} from './currenct-select.component';
+import {MyPipe} from './my.pipes';
 
 @NgModule({
   imports: [BrowserModule,FormsModule],
-  declarations: [AppComponent, SecondComponent,ThirdComponent, CurrencySelectComponent],
+  declarations: [AppComponent, SecondComponent,ThirdComponent, CurrencySelectComponent,MyPipe],
   providers: [
     { provide: QuoteService, useClass: QuoteService }
   ],
