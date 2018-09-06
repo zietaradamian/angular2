@@ -7,9 +7,10 @@ import {ExchangeService} from './exchange.service';
     template: `<h2>Konwerter Walutowy</h2>
             Przelicz: <input type="number" [(ngModel)]="baseAmount"
             [ngClass]="{error:isValid(baseAmount), warning: baseAmount<0}">
-            <currency-select [selected]="baseCurrency"></currency-select>
+            <currency-select [(selected)]="baseCurrency"></currency-select>
             = <strong>{{targetAmount}}</strong> 
-            <currency-select [selected]="targetCurrency"></currency-select>  
+            <currency-select [(selected)]="targetCurrency"></currency-select>  
+            
             `,
     styles:[` input[type=number] {
                 width: 10ex;
@@ -44,4 +45,5 @@ export class ThirdComponent {
     isValid(value){
         return !Number.isFinite(value);
     }
+  
 }
